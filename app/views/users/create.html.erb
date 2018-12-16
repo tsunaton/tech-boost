@@ -1,0 +1,7 @@
+@user = User.new (name: :name, email: email)
+if @user.save
+ render
+else
+ render new_user_path
+ flash
+end
