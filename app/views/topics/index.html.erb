@@ -12,7 +12,14 @@
               <%= link_to favorites_path(topic_id: topic.id), method: :post do %>
                 <%= image_tag 'icons/heart-black.png', class: 'topic-index-icon' %>
               <% end %>
+            <% else topic.favorite_users.include?(current_user) %>
+              <%= link_to favorites_path(topic_id: topic.id), method: :delete do %>
+                <%= image_tag 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/1200px-Heart_coraz%C3%B3n.svg.png', class: 'topic-index-icon' %>
+              <% end %>
             <% end %>
+
+            <%= topic.favorite_users.count %>
+
             <%= image_tag 'icons/comment.png', class: 'topic-index-icon' %>
             <p class="topic-text">
               <%= topic.description %>

@@ -1,12 +1,12 @@
-class SessionController < ApplicationController
+class SessionsController < ApplicationController
   def new
   end
 
   def create
     user = User.find_by(email: params[:session][:email])
-    if user&&user.audenticate(params[:session][:password])
+    if user&&user.authenticate(params[:session][:password])
       log_in user
-      redirect_to index_micro_post_path, success: "ログインしました"
+      redirect_to :topics, success: "ログインしました"
     else
       flash.now[:danger] = "ログインに失敗しました"
       render :new
@@ -28,4 +28,3 @@ class SessionController < ApplicationController
     session.delete[:user_id]
     @current_user = nil
   end
-end
