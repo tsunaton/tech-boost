@@ -11,7 +11,6 @@ Bundler.require(*Rails.groups)
 module Pictgram
   class Application < Rails::Application
     config.autoload_paths += Dir[Rails.root.join('app', 'uploaders')]   # この行を追加
-
   end
 end
     # Settings in config/environments/* take precedence over those specified here.
